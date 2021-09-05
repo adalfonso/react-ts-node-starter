@@ -1,5 +1,8 @@
+import "core-js";
+import "regenerator-runtime";
 import * as dotenv from "dotenv";
 import * as express from "express";
+import { connect } from "./db/Client";
 import { enableHmr } from "./hmr";
 
 dotenv.config();
@@ -24,3 +27,5 @@ app.listen(process.env.NODE_PORT, () => {
   console.log(`Server started: http://localhost:${process.env.NODE_PORT}`);
   console.log(`Serving content from /${process.env.SOURCE_DIR}/`);
 });
+
+connect(process.env.MONGO_HOST, process.env.MONGO_PORT);

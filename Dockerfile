@@ -6,4 +6,4 @@ RUN npm install --silent
 RUN npm install pm2 -g
 COPY . .
 EXPOSE 3000
-CMD ["npm","run","start:docker"]
+CMD ["npm","start"]

@@ -16,15 +16,54 @@ Copy sample env and configure values accordingly
 
 ## Usage
 
+**Using Docker**
+
+There are two ways of running the application; with docker, and without docker.
+Running the app within docker is preferred because it requires less manual setup.
+
+1. Install docker
+2. Set up mongo volumes and network
+
+```bash
+  docker volume create mongodb
+  docker volume create mongodb_config
+  docker network create mongodb
+```
+
+**Development w/Docker**
+
+```bash
+  npm run start:dev-docker
+```
+
+- HMR enabled
+- App served @ `http://localhost:9000`
+- Server run with nodemon
+
+**Production w/Docker**
+
+```bash
+  npm run start:docker
+```
+
+- App served @ `http://localhost:3000`
+- Server run with pm2-runtime
+
+---
+
+**Without Using Docker**
+
+1. Manually set up mongodb on your system
+
 **Development**
 
 ```bash
   npm run start:dev
 ```
 
-- Build app continuously (HMR enabled) to `/dist/`
+- HMR enabled
 - App served @ `http://localhost:3000`
-- Run with nodemon
+- Server run with nodemon
 
 **Production**
 
@@ -32,31 +71,16 @@ Copy sample env and configure values accordingly
   npm run start
 ```
 
-- Build app once (HMR disabled) to `/dist/`
 - App served @ `http://localhost:3000`
 - Uses pm2 to daemonize the application. For further reading please see https://pm2.keymetrics.io/docs/usage/quick-start/
 
-**Running in a container**
+## All commands
 
-- Build the image
-
-```bash
-  docker build -t react-starter .
-```
-
-- Run the container on port 9000
-
-```bash
-  docker run -it -p 9000:3000 -v $(pwd):/user/src/app react-starter
-```
-
----
-
-**All commands**
-
-| Command             | Description                                                  |
-| ------------------- | ------------------------------------------------------------ |
-| `npm run start:dev` | Build app (HMR enabled) and serve @ `http://localhost:3000`  |
-| `npm run start`     | Build app (HMR disabled) and serve @ `http://localhost:3000` |
-| `npm run test`      | Run tests                                                    |
-| `npm run lint`      | Run linter                                                   |
+| Command              | Description                                                                |
+| -------------------- | -------------------------------------------------------------------------- |
+| `npm run docker:dev` | Build app, HMR enabled, run in docker, and serve @ `http://localhost:9000` |
+| `npm run docker`     | Build app, run in docker, and serve @ `http://localhost:3000`              |
+| `npm run start:dev`  | Build app, HMR enabled, and serve @ `http://localhost:3000`                |
+| `npm run start`      | Build app and serve @ `http://localhost:3000`                              |
+| `npm run test`       | Run tests                                                                  |
+| `npm run lint`       | Run linter                                                                 |
