@@ -33,7 +33,7 @@ Running the app within docker is preferred because it requires less manual setup
 **Development w/Docker**
 
 ```bash
-  npm run start:dev-docker
+  npm run docker:dev
 ```
 
 - HMR enabled
@@ -43,7 +43,7 @@ Running the app within docker is preferred because it requires less manual setup
 **Production w/Docker**
 
 ```bash
-  npm run start:docker
+  npm run docker
 ```
 
 - App served @ `http://localhost:3000`

@@ -18,4 +18,8 @@ module.exports = merge(common, {
   },
   devtool: "inline-source-map",
   plugins: [new webpack.HotModuleReplacementPlugin()],
+  watchOptions: {
+    aggregateTimeout: 300,
+    poll: 1000,
+  },
 });
